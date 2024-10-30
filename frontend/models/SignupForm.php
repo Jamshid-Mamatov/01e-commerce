@@ -66,15 +66,21 @@ class SignupForm extends Model
      */
     protected function sendEmail($user)
     {
-        return Yii::$app
-            ->mailer
-            ->compose(
-                ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
-                ['user' => $user]
-            )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+//        return Yii::$app
+//            ->mailer
+//            ->compose(
+//                ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
+//                ['user' => $user]
+//            )
+//            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+//            ->setTo($this->email)
+//            ->setSubject('Account registration at ' . Yii::$app->name)
+//            ->send();
+        return Yii::$app->mailer->compose()
             ->setTo($this->email)
-            ->setSubject('Account registration at ' . Yii::$app->name)
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+            ->setSubject('Email Confirmation')
+            ->setTextBody("Follow the link to verify your email: " . Yii::$app->urlManager->createAbsoluteUrl(['site/verify-email', 'token' => $user->verification_token]))
             ->send();
     }
 }
