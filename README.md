@@ -1,60 +1,64 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
-    <br>
-</p>
+## Small E-commerce Website
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+This project is a small, fully-featured e-commerce website supporting multiple languages, with a complete set of functionalities including authentication, product management, shopping cart, checkout, and an admin panel.
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+### Features
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
+### Multi-language Support
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
+	•	The website supports multiple languages: Uzbek, Russian, and others as needed.
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![build](https://github.com/yiisoft/yii2-app-advanced/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-advanced/actions?query=workflow%3Abuild)
+### User Authentication
 
-DIRECTORY STRUCTURE
--------------------
+	•	Sign In and Sign Up functionalities.
+	•	Account Confirmation via email or SMS after registration.
 
-```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-```
+### Categories and Products
+
+	•	Categories with nested subcategories to organize products.
+	•	Products with details including:
+	•	Name
+	•	Status
+	•	Images
+	•	Price and discount price
+	•	Categories
+	•	Characteristics
+	•	Comments section for user feedback
+	•	Additional Product Blocks:
+	•	Related Products slider (e.g., accessories recommended for a specific product).
+	•	Similar Products slider (e.g., different models of a similar product).
+	•	Recently Viewed Products slider (similar to OLX).
+
+### Blog and Promotions
+
+	•	Promotions Page listing active promotions.
+	•	Each promotion has a dedicated page with product or category blocks displayed with pagination.
+
+### Shopping Cart (Basket)
+
+	•	Users can add or remove products from the cart.
+	•	Products that are out of stock cannot be added to the cart.
+
+### Checkout
+
+	•	Gather necessary details from the customer to complete the order.
+	•	Delivery Option selection.
+	•	Payment Option selection, with options including Cash, Terminal, Payme, and Click.
+	•	Payme and Click Integrations are set up with test merchants following official documentation.
+
+### User Account (Profile)
+
+	•	Profile Management: Update profile information and change password.
+	•	Address Management: Users can add multiple addresses for delivery.
+	•	Favorite Products: Dedicated page for saved products.
+	•	Order History: Lists past orders with detailed order views.
+
+### Admin Panel
+
+### Admin Capabilities
+
+	•	Category Management: Full CRUD (Create, Read, Update, Delete) for categories.
+	•	Product Management: CRUD for managing products.
+	•	Blog Management: CRUD for managing blog posts and promotions.
+	•	User Management: CRUD for users, with permission and role management.
+	•	Order Management: CRUD for orders, with the ability to update payment types (e.g., cash or terminal).
