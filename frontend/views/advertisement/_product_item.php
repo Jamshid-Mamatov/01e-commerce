@@ -11,14 +11,14 @@ use yii\helpers\Url;
     <div class="product"><span class="badges"><span class="new">New</span></span>
         <div class="thumb">
             <a href="<?= Url::to(['product/view', 'id' => $model->id]) ?>" class="image">
-                <?= Html::img('http://localhost:8888/' . $model->productImages[0]->image_path, ['alt' => $model->name]) ?>
-                <?= Html::img('http://localhost:8888/' . $model->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $model->name]) ?>
+                <?= Html::img('http://localhost:8888/' . $model->productImages[0]->image_path, ['alt' => $model->getTranslatedAttributes()['title'] ]) ?>
+                <?= Html::img('http://localhost:8888/' . $model->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $model->getTranslatedAttributes()['title'] ]) ?>
             </a>
         </div>
         <div class="content">
 
             <h5 class="title">
-                <?= Html::a($model->name, ['product/view', 'id' => $model->id]) ?>
+                <?= Html::a($model->getTranslatedAttributes()['title'] , ['product/view', 'id' => $model->id]) ?>
             </h5>
             <span class="price">
                 <?php if ($model->is_discount): ?>
@@ -29,7 +29,7 @@ use yii\helpers\Url;
                 <?php endif; ?>
 
             </span>
-            <p><?= Html::encode($model->description) ?></p>
+            <p><?= Html::encode($model->getTranslatedAttributes()['description']) ?></p>
         </div>
         <div class="actions">
             <!-- Add to Cart Button -->

@@ -88,7 +88,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $cookies = Yii::$app->request->cookies;
+//        $cookies = Yii::$app->request->cookies;
 //        echo "<pre>";
 //        var_dump(Yii::$app->session->getCookieParams());
 //        var_dump($cookies->getValue('language', 'en'));

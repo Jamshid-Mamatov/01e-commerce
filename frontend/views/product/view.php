@@ -11,8 +11,8 @@ use yii\widgets\Pjax;
 
 /** @var yii\web\View $this */
 /** @var common\models\Product $model */
-
-$this->title = $model->name;
+$productTranslation = $model->getTranslatedAttributes();
+$this->title = $productTranslation['title'];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Products'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -34,7 +34,9 @@ $attributes = ProductAttributeValue::find()
 
 $similarProducts = $model->similarProducts1;
 $relatedProducts = $model->relatedProducts1;
-//\common\components\Utils::printAsError($relatedProducts);
+
+
+//\common\components\Utils::printAsError($productTranslation);
 ?>
 
 
@@ -46,7 +48,7 @@ $relatedProducts = $model->relatedProducts1;
             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                 <?php if ($mainImage):?>
                     <div class="main-image-container">
-                        <?= Html::img('http://localhost:8888/'  . $mainImage->image_path, ['class'=>'img-responsive m-auto','alt' => $model->name]) ?>
+                        <?= Html::img('http://localhost:8888/'  . $mainImage->image_path, ['class'=>'img-responsive m-auto','alt' => $productTranslation['title']]) ?>
                     </div>
                 <?php endif;?>
 
@@ -57,7 +59,7 @@ $relatedProducts = $model->relatedProducts1;
                             <?php foreach ($images as $index => $image):?>
                                 <?php if ($index >0): ?>
                                     <div class="<?= $isSwiper ? 'swiper-slide' : '' ?>">
-                                        <?= Html::img('http://localhost:8888/'  . $image->image_path, ['class'=>'img-responsive m-auto','alt' => $model->name]) ?>
+                                        <?= Html::img('http://localhost:8888/'  . $image->image_path, ['class'=>'img-responsive m-auto','alt' => $productTranslation['title']]) ?>
                                     </div>
                                 <?php endif;?>
                             <?php endforeach;?>
@@ -75,7 +77,7 @@ $relatedProducts = $model->relatedProducts1;
             </div>
             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="product-details-content quickview-content ml-25px">
-                    <h2><?= $model->name ?></h2>
+                    <h2><?= $productTranslation['title'] ?></h2>
                     <div class="price">
 
                             <?php if ($model->is_discount): ?>
@@ -110,7 +112,7 @@ $relatedProducts = $model->relatedProducts1;
                         </div>
                         <p>Average rating based on <?= count($reviews); ?> reviews.</p>
                     </div>
-                    <p class="mt-30px"><?= $model->description?></p>
+                    <p class="mt-30px"><?= $productTranslation['description']?></p>
 
                     <div class="pro-details-quality">
 
@@ -158,7 +160,7 @@ $relatedProducts = $model->relatedProducts1;
                         </div>
                         <div id="des-details1" class="tab-pane active">
                             <div class="product-description-wrapper">
-                                <?= Html::tag('p',$model->description)?>
+                                <?= Html::tag('p',$productTranslation['description'])?>
                             </div>
                         </div>
                         <div id="des-details3" class="tab-pane">

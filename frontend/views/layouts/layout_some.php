@@ -19,17 +19,6 @@ $cart_items = Cart::getUserCart()->cartItems;
 $wishlist = Wishlist::findALl(['user_id' => Yii::$app->user->id]);
 $this->beginPage();
 
-//Yii::$app->language = 'en';
-//$languageItem = new cetver\LanguageSelector\items\DropDownLanguageItem([
-//    'languages' => [
-//        'en' => '<span class="flag-icon flag-icon-us"></span> English',
-//        'ru' => '<span class="flag-icon flag-icon-ru"></span> Russian',
-//        'de' => '<span class="flag-icon flag-icon-de"></span> Deutsch',
-//    ],
-//    'options' => ['encode' => false],
-//]);
-
-//\common\components\Utils::printAsError($languageItem);
 ?>
 
 <!DOCTYPE html>
@@ -197,33 +186,27 @@ $this->beginPage();
                         <ul>
                             <!-- Home menu item with dropdown -->
                             <li class="dropdown">
-                                <?= Html::a('Home <i class="fa fa-angle-down"></i>', '/site', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']) ?>
+                                <?= Html::a(Yii::t('app','Home').'<i class="fa fa-angle-down"></i>', '/site', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']) ?>
                             </li>
 
                             <!-- About page -->
                             <li>
-                                <?= Html::a('About', Url::to(['/site/about'])) ?>
+                                <?= Html::a(Yii::t('app','About'), Url::to(['/site/about'])) ?>
                             </li>
 
                             <!-- Pages menu with dropdown -->
                             <li class="dropdown position-static">
-                                <?= Html::a('Pages <i class="fa fa-angle-down"></i>', '#', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']) ?>
+<!--                                --><?php //= Html::a('Pages <i class="fa fa-angle-down"></i>', '#', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']) ?>
                                 <ul class="mega-menu d-block">
                                     <li class="d-flex">
-                                        <ul class="d-block">
-                                            <li class="title"><?= Html::a('Inner Pages', '#') ?></li>
-                                            <li><?= Html::a('404 Page', Url::to(['/site/error', 'code' => 404])) ?></li>
-                                            <li><?= Html::a('Order Tracking', Url::to(['/order/tracking'])) ?></li>
-                                            <li><?= Html::a('Faq Page', Url::to(['/site/faq'])) ?></li>
-                                            <li><?= Html::a('Coming Soon Page', Url::to(['/site/coming-soon'])) ?></li>
-                                        </ul>
-                                        <ul class="d-block">
-                                            <li class="title"><?= Html::a('Other Shop Pages', '#') ?></li>
-                                            <li><?= Html::a('Cart Page', Url::to(['/cart/index'])) ?></li>
-                                            <li><?= Html::a('Checkout Page', Url::to(['/checkout/index'])) ?></li>
-                                            <li><?= Html::a('Compare Page', Url::to(['/compare/index'])) ?></li>
-                                            <li><?= Html::a('Wishlist Page', Url::to(['/wishlist/index'])) ?></li>
-                                        </ul>
+
+<!--                                        <ul class="d-block">-->
+<!--                                            <li class="title">--><?php //= Html::a('Other Shop Pages', '#') ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Cart Page', Url::to(['/cart/index'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Checkout Page', Url::to(['/checkout/index'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Compare Page', Url::to(['/compare/index'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Wishlist Page', Url::to(['/wishlist/index'])) ?><!--</li>-->
+<!--                                        </ul>-->
                                         <ul class="d-block">
                                             <li class="title"><?= Html::a('Related Shop Pages', '#') ?></li>
                                             <li><?= Html::a('Account Page', Url::to(['/user/account'])) ?></li>
@@ -243,84 +226,84 @@ $this->beginPage();
                             </li>
 
                             <!-- Shop menu with dropdown -->
-                            <li class="dropdown position-static">
-                                <?= Html::a('Shop <i class="fa fa-angle-down"></i>', '#', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']) ?>
-                                <ul class="mega-menu d-block">
-                                    <li class="d-flex">
-                                        <ul class="d-block">
-                                            <li class="title"><?= Html::a('Shop Page', '#') ?></li>
-                                            <li><?= Html::a('Shop 3 Column', Url::to(['/shop/3-column'])) ?></li>
-                                            <li><?= Html::a('Shop 4 Column', Url::to(['/shop/4-column'])) ?></li>
-                                            <li><?= Html::a('Shop Left Sidebar', Url::to(['/shop/left-sidebar'])) ?></li>
-                                            <li><?= Html::a('Shop Right Sidebar', Url::to(['/shop/right-sidebar'])) ?></li>
-                                            <li><?= Html::a('Shop List Left Sidebar', Url::to(['/shop/list-left-sidebar'])) ?></li>
-                                            <li><?= Html::a('Shop List Right Sidebar', Url::to(['/shop/list-right-sidebar'])) ?></li>
-                                        </ul>
-                                        <ul class="d-block">
-                                            <li class="title"><?= Html::a('Product Details Page', '#') ?></li>
-                                            <li><?= Html::a('Product Single', Url::to(['/product/single'])) ?></li>
-                                            <li><?= Html::a('Product Variable', Url::to(['/product/variable'])) ?></li>
-                                            <li><?= Html::a('Product Affiliate', Url::to(['/product/affiliate'])) ?></li>
-                                            <li><?= Html::a('Product Group', Url::to(['/product/group'])) ?></li>
-                                            <li><?= Html::a('Product Tab 2', Url::to(['/product/tabstyle-2'])) ?></li>
-                                            <li><?= Html::a('Product Tab 3', Url::to(['/product/tabstyle-3'])) ?></li>
-                                        </ul>
-                                        <ul class="d-block">
-                                            <li class="title"><?= Html::a('Single Product Page', '#') ?></li>
-                                            <li><?= Html::a('Product Slider', Url::to(['/product/slider'])) ?></li>
-                                            <li><?= Html::a('Product Gallery Left', Url::to(['/product/gallery-left'])) ?></li>
-                                            <li><?= Html::a('Product Gallery Right', Url::to(['/product/gallery-right'])) ?></li>
-                                            <li><?= Html::a('Product Sticky Left', Url::to(['/product/sticky-left'])) ?></li>
-                                            <li><?= Html::a('Product Sticky Right', Url::to(['/product/sticky-right'])) ?></li>
-                                            <li><?= Html::a('Cart Page', Url::to(['/cart/index'])) ?></li>
-                                        </ul>
-                                        <ul class="d-block p-0 border-0">
-                                            <li class="title"><?= Html::a('Single Product Page', '#') ?></li>
-                                            <li><?= Html::a('Checkout Page', Url::to(['/checkout/index'])) ?></li>
-                                            <li><?= Html::a('Compare Page', Url::to(['/compare/index'])) ?></li>
-                                            <li><?= Html::a('Wishlist Page', Url::to(['/wishlist/index'])) ?></li>
-                                            <li><?= Html::a('Account Page', Url::to(['/user/account'])) ?></li>
-                                            <li><?= Html::a('Login & Register Page', Url::to(['/user/login'])) ?></li>
-                                            <li><?= Html::a('Empty Cart Page', Url::to(['/cart/empty'])) ?></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+<!--                            <li class="dropdown position-static">-->
+<!--                                --><?php //= Html::a('Shop <i class="fa fa-angle-down"></i>', '#', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']) ?>
+<!--                                <ul class="mega-menu d-block">-->
+<!--                                    <li class="d-flex">-->
+<!--                                        <ul class="d-block">-->
+<!--                                            <li class="title">--><?php //= Html::a('Shop Page', '#') ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Shop 3 Column', Url::to(['/shop/3-column'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Shop 4 Column', Url::to(['/shop/4-column'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Shop Left Sidebar', Url::to(['/shop/left-sidebar'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Shop Right Sidebar', Url::to(['/shop/right-sidebar'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Shop List Left Sidebar', Url::to(['/shop/list-left-sidebar'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Shop List Right Sidebar', Url::to(['/shop/list-right-sidebar'])) ?><!--</li>-->
+<!--                                        </ul>-->
+<!--                                        <ul class="d-block">-->
+<!--                                            <li class="title">--><?php //= Html::a('Product Details Page', '#') ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Single', Url::to(['/product/single'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Variable', Url::to(['/product/variable'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Affiliate', Url::to(['/product/affiliate'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Group', Url::to(['/product/group'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Tab 2', Url::to(['/product/tabstyle-2'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Tab 3', Url::to(['/product/tabstyle-3'])) ?><!--</li>-->
+<!--                                        </ul>-->
+<!--                                        <ul class="d-block">-->
+<!--                                            <li class="title">--><?php //= Html::a('Single Product Page', '#') ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Slider', Url::to(['/product/slider'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Gallery Left', Url::to(['/product/gallery-left'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Gallery Right', Url::to(['/product/gallery-right'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Sticky Left', Url::to(['/product/sticky-left'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Product Sticky Right', Url::to(['/product/sticky-right'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Cart Page', Url::to(['/cart/index'])) ?><!--</li>-->
+<!--                                        </ul>-->
+<!--                                        <ul class="d-block p-0 border-0">-->
+<!--                                            <li class="title">--><?php //= Html::a('Single Product Page', '#') ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Checkout Page', Url::to(['/checkout/index'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Compare Page', Url::to(['/compare/index'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Wishlist Page', Url::to(['/wishlist/index'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Account Page', Url::to(['/user/account'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Login & Register Page', Url::to(['/user/login'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Empty Cart Page', Url::to(['/cart/empty'])) ?><!--</li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
 
                             <!-- Blog menu with dropdown -->
                             <li class="dropdown">
-                                <?= Html::a('Blog <i class="fa fa-angle-down"></i>', '#', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']) ?>
-                                <ul class="sub-menu">
-                                    <li class="dropdown position-static">
-                                        <?= Html::a('Blog Grid <i class="fa fa-angle-right"></i>', Url::to(['/blog/grid-left-sidebar'])) ?>
-                                        <ul class="sub-menu sub-menu-2">
-                                            <li><?= Html::a('Blog Grid', Url::to(['/blog/grid'])) ?></li>
-                                            <li><?= Html::a('Blog Grid Left Sidebar', Url::to(['/blog/grid-left-sidebar'])) ?></li>
-                                            <li><?= Html::a('Blog Grid Right Sidebar', Url::to(['/blog/grid-right-sidebar'])) ?></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown position-static">
-                                        <?= Html::a('Blog List <i class="fa fa-angle-right"></i>', Url::to(['/blog/list-left-sidebar'])) ?>
-                                        <ul class="sub-menu sub-menu-2">
-                                            <li><?= Html::a('Blog List', Url::to(['/blog/list'])) ?></li>
-                                            <li><?= Html::a('Blog List Left Sidebar', Url::to(['/blog/list-left-sidebar'])) ?></li>
-                                            <li><?= Html::a('Blog List Right Sidebar', Url::to(['/blog/list-right-sidebar'])) ?></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown position-static">
-                                        <?= Html::a('Single Blog <i class="fa fa-angle-right"></i>', Url::to(['/blog/single-left-sidebar'])) ?>
-                                        <ul class="sub-menu sub-menu-2">
-                                            <li><?= Html::a('Single Blog', Url::to(['/blog/single'])) ?></li>
-                                            <li><?= Html::a('Single Blog Left Sidebar', Url::to(['/blog/single-left-sidebar'])) ?></li>
-                                            <li><?= Html::a('Single Blog Right Sidebar', Url::to(['/blog/single-right-sidebar'])) ?></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <?= Html::a(yii::t('app','Blog').' <i class="fa fa-angle-down"></i>', '/blog', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']) ?>
+<!--                                <ul class="sub-menu">-->
+<!--                                    <li class="dropdown position-static">-->
+<!--                                        --><?php //= Html::a('Blog Grid <i class="fa fa-angle-right"></i>', Url::to(['/blog/grid-left-sidebar'])) ?>
+<!--                                        <ul class="sub-menu sub-menu-2">-->
+<!--                                            <li>--><?php //= Html::a('Blog Grid', Url::to(['/blog/grid'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Blog Grid Left Sidebar', Url::to(['/blog/grid-left-sidebar'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Blog Grid Right Sidebar', Url::to(['/blog/grid-right-sidebar'])) ?><!--</li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                    <li class="dropdown position-static">-->
+<!--                                        --><?php //= Html::a('Blog List <i class="fa fa-angle-right"></i>', Url::to(['/blog/list-left-sidebar'])) ?>
+<!--                                        <ul class="sub-menu sub-menu-2">-->
+<!--                                            <li>--><?php //= Html::a('Blog List', Url::to(['/blog/list'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Blog List Left Sidebar', Url::to(['/blog/list-left-sidebar'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Blog List Right Sidebar', Url::to(['/blog/list-right-sidebar'])) ?><!--</li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                    <li class="dropdown position-static">-->
+<!--                                        --><?php //= Html::a('Single Blog <i class="fa fa-angle-right"></i>', Url::to(['/blog/single-left-sidebar'])) ?>
+<!--                                        <ul class="sub-menu sub-menu-2">-->
+<!--                                            <li>--><?php //= Html::a('Single Blog', Url::to(['/blog/single'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Single Blog Left Sidebar', Url::to(['/blog/single-left-sidebar'])) ?><!--</li>-->
+<!--                                            <li>--><?php //= Html::a('Single Blog Right Sidebar', Url::to(['/blog/single-right-sidebar'])) ?><!--</li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
                             </li>
 
                             <!-- Contact page -->
                             <li>
-                                <?= Html::a('Contact', Url::to(['/site/contact'])) ?>
+                                <?= Html::a(Yii::t('app','Contact'), Url::to(['/site/contact'])) ?>
                             </li>
                         </ul>
                     </div>

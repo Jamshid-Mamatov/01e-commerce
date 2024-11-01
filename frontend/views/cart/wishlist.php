@@ -39,7 +39,7 @@ $wishlist_items = Wishlist::findAll(['user_id' => Yii::$app->user->id]);
                                             Url::to(['product/view', 'id' => $item->product->id])
                                         ) ?>
                                     </td>
-                                    <td class="product-name"><?= Html::label('' . $item->product->name) ?></td>
+                                    <td class="product-name"><?= Html::label('' . $item->product->getTranslatedAttributes()['title']) ?></td>
                                     <td class="product-price-cart"> <?= Html::tag('span', $item->product->price , ['class' => 'amount']) ?> </td>
 
                                     <td>

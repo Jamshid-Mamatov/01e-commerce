@@ -104,8 +104,8 @@ $ads=\common\models\Advertisement::find()->all();
                                             <a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>" class="image">
 <!--                                                --><?php //= \common\components\Utils::printAsError($product->productImages)?>
                                                 <?php if (!empty($product->productImages)): ?>
-                                                <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->name]) ?>
-                                                <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->name]) ?>
+                                                <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->getTranslatedAttributes()['title'] ]) ?>
+                                                <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->getTranslatedAttributes()['title'] ]) ?>
                                                 <?php endif;?>
                                             </a>
                                         </div>
@@ -116,7 +116,7 @@ $ads=\common\models\Advertisement::find()->all();
                                             </span>
                                             <?php endif;?>
                                             <h5 class="title">
-                                                <?= Html::a(Html::encode($product->name), ['product/view', 'id' => $product->id]) ?>
+                                                <?= Html::a(Html::encode($product->getTranslatedAttributes()['title'] ), ['product/view', 'id' => $product->id]) ?>
                                             </h5>
                                             <span class="price">
                                                 <?php if ($product->is_discount): ?>
@@ -179,11 +179,11 @@ $ads=\common\models\Advertisement::find()->all();
 
                                             <div class="thumb">
                                                 <a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>" class="image">
-<!--                                                    --><?php //= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->name]) ?>
-<!--                                                    --><?php //= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->name]) ?>
+<!--                                                    --><?php //= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->getTranslatedAttributes()['title'] ]) ?>
+<!--                                                    --><?php //= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->getTranslatedAttributes()['title'] ]) ?>
                                                     <?php if (!empty($product->productImages)): ?>
-                                                        <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->name]) ?>
-                                                        <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->name]) ?>
+                                                        <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->getTranslatedAttributes()['title'] ]) ?>
+                                                        <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->getTranslatedAttributes()['title'] ]) ?>
                                                     <?php endif;?>
                                                 </a>
                                             </div>
@@ -194,7 +194,7 @@ $ads=\common\models\Advertisement::find()->all();
                                                     </span>
                                                 <?php endif;?>
                                                 <h5 class="title">
-                                                    <?= Html::a(Html::encode($product->name), ['product/view', 'id' => $product->id]) ?>
+                                                    <?= Html::a(Html::encode($product->getTranslatedAttributes()['title'] ), ['product/view', 'id' => $product->id]) ?>
                                                 </h5>
                                                 <span class="price">
                                                 <?php if ($product->is_discount): ?>
@@ -256,11 +256,11 @@ $ads=\common\models\Advertisement::find()->all();
 
                                             <div class="thumb">
                                                 <a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>" class="image">
-<!--                                                    --><?php //= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->name]) ?>
-<!--                                                    --><?php //= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->name]) ?>
+<!--                                                    --><?php //= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->getTranslatedAttributes()['title'] ]) ?>
+<!--                                                    --><?php //= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->getTranslatedAttributes()['title'] ]) ?>
                                                     <?php if (!empty($product->productImages)): ?>
-                                                        <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->name]) ?>
-                                                        <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->name]) ?>
+                                                        <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['alt' => $product->getTranslatedAttributes()['title'] ]) ?>
+                                                        <?= Html::img('http://localhost:8888/'  . $product->productImages[0]->image_path, ['class' => 'hover-image', 'alt' => $product->getTranslatedAttributes()['title'] ]) ?>
                                                     <?php endif;?>
                                                 </a>
                                             </div>
@@ -271,7 +271,7 @@ $ads=\common\models\Advertisement::find()->all();
                                                     </span>
                                                 <?php endif;?>
                                                 <h5 class="title">
-                                                    <?= Html::a(Html::encode($product->name), ['product/view', 'id' => $product->id]) ?>
+                                                    <?= Html::a(Html::encode($product->getTranslatedAttributes()['title'] ), ['product/view', 'id' => $product->id]) ?>
                                                 </h5>
                                                 <span class="price">
                                                 <?php if ($product->is_discount): ?>

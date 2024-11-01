@@ -144,6 +144,25 @@ class Product extends BaseActiveRecord
     {
         return $this->hasMany(ProductTranslation::class, ['product_id' => 'id']);
     }
+    public function getTranslatedAttributes(){
+
+        $languageCode = Yii::$app->language;
+        $translation= $this->getProductTranslations()->where(['language_code'=>$languageCode])->one();
+
+        if ($translation){
+            return [
+                'title' => $translation->title,
+                'description' => $translation->description,
+            ];
+        }
+
+        return [
+            'title' => $this->name,
+            'description' => $this->description,
+        ];
+    }
+
+
 
     /**
      * Gets query for [[Products]].
