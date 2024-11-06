@@ -37,8 +37,8 @@ class Utils extends Component
             throw new Exception("Failed to save uploaded image to $filePath");
         }
 
-
-        return $filePath;
+        return "http://localhost:8888/".$filePath;
+//        return "/".$filePath;
     }
 
     public static function printAsError($data, $die = true)

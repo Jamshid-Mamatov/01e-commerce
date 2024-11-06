@@ -67,6 +67,7 @@ class Product extends BaseActiveRecord
         return 'product';
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -287,7 +288,7 @@ class Product extends BaseActiveRecord
         $order=1;
         $not_upload=[];
         $uploaded = [];
-
+//        Utils::printAsError($images);
         foreach ($images as $image) {
 
             $path=Utils::uploadImage($image);

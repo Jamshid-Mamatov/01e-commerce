@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\Utils;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -28,7 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
-
+    const SCENARIO_REGISTER = 'register';
 
     /**
      * {@inheritdoc}
@@ -54,6 +55,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['username', 'email', 'password'], 'required', 'on' => self::SCENARIO_REGISTER],
             [['city','state','country','zip'],'string'],
             ['email', 'email'],
             ['username','string'],
@@ -71,6 +73,12 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
 
+    public function generateAccessToken(){
+        $this->access_token= Yii::$app->security->generateRandomString();
+//        Utils::printAsError($this->access_token);
+        $this->save(false);
+        return $this->access_token;
+    }
     public function beforeDelete()
     {
         if (parent::beforeDelete()) {
@@ -88,8 +96,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
-    }
+        return static::findOne(['access_token' => $token]);    }
 
     /**
      * Finds user by username

@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\Utils;
 use Yii;
 use yii\base\Model;
 
@@ -57,6 +58,8 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
+//            Utils::printAsError($this->_user);
+//            Utils::printAsError(Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0));
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
         
